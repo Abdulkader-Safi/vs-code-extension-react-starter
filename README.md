@@ -1,71 +1,142 @@
-# react-starter README
+# React Starter - VSCode Extension
 
-This is the README for your extension "react-starter". After writing up a brief description, we recommend including the following sections.
+A VSCode extension template built with React, TailwindCSS, and React Router DOM for building modern webview-based extensions.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+This extension includes two example pages demonstrating VSCode webview API integration:
 
-For example if there is an image subfolder under your extension project workspace:
+1. **Notification Page** - Send messages from the webview to VSCode to show notifications
+2. **Directory Listing Page** - Request data from VSCode and display it in the React UI
 
-\!\[feature X\]\(images/feature-x.png\)
+## Project Structure
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+```
+.
+├── src/
+│   ├── extension.ts              # Extension entry point
+│   ├── WebviewProvider.ts        # Webview panel provider
+│   └── webview/
+│       ├── index.tsx             # React app entry point
+│       ├── index.css             # TailwindCSS imports
+│       ├── App.tsx               # Main app with routing
+│       ├── declarations.d.ts     # Type declarations
+│       └── pages/
+│           ├── NotificationPage.tsx
+│           └── DirectoryListPage.tsx
+├── dist/                         # Build output
+├── esbuild.js                    # Build configuration
+├── tailwind.config.js           # TailwindCSS configuration
+└── postcss.config.js            # PostCSS configuration
+```
 
-## Requirements
+## Development
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### Prerequisites
 
-## Extension Settings
+- Node.js and npm
+- VSCode
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### Setup
 
-For example:
+1. Install dependencies:
 
-This extension contributes the following settings:
+   ```bash
+   npm install
+   ```
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+2. Build the extension:
 
-## Known Issues
+   ```bash
+   npm run compile
+   ```
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+3. Watch for changes:
 
-## Release Notes
+   ```bash
+   npm run watch
+   ```
 
-Users appreciate release notes as you update your extension.
+### Running the Extension
 
-### 1.0.0
+1. Press `F5` in VSCode to open a new Extension Development Host window
+2. Open the Command Palette (`Cmd+Shift+P` on Mac, `Ctrl+Shift+P` on Windows/Linux)
+3. Run the command: **Open React View**
+4. The React webview will open in a new panel in the main editor area
 
-Initial release of ...
+## Examples
 
-### 1.0.1
+### Notification Button
 
-Fixed issue #.
+Navigate to the "Notification" page and click the button to send a notification to VSCode. This demonstrates:
 
-### 1.1.0
+- Message passing from webview to extension
+- Using `vscode.window.showInformationMessage()`
 
-Added features X, Y, and Z.
+### Directory Listing
 
----
+Navigate to the "Directory" page and click "Load Current Directory" to see the contents of your workspace. This demonstrates:
 
-## Following extension guidelines
+- Requesting data from the extension
+- Receiving and displaying data in React
+- Using VSCode's file system API
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+## Technology Stack
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+- **React 19** - UI framework
+- **React Router DOM** - Client-side routing
+- **TailwindCSS v4** - Utility-first CSS framework
+- **TypeScript** - Type safety
+- **esbuild** - Fast bundler
+- **PostCSS** - CSS processing
 
-## Working with Markdown
+## Build Scripts
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+- `npm run compile` - Build the extension
+- `npm run watch` - Watch mode for development
+- `npm run check-types` - Type checking
+- `npm run lint` - Lint the code
+- `npm test` - Run tests
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+## VSCode API Communication
 
-## For more information
+The extension uses the VSCode webview messaging API:
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+**From Webview to Extension:**
 
-**Enjoy!**
+```typescript
+vscode.postMessage({
+  type: 'showNotification',
+  message: 'Hello from React!'
+});
+```
+
+**From Extension to Webview:**
+
+```typescript
+panel.webview.postMessage({
+  type: 'directoryContents',
+  data: { contents: [...] }
+});
+```
+
+## Customization
+
+### Adding New Pages
+
+1. Create a new component in `src/webview/pages/`
+2. Add a route in `src/webview/App.tsx`
+3. Add navigation link in the nav bar
+
+### Styling
+
+The extension uses TailwindCSS v4. All Tailwind utilities are available. The theme uses a dark color scheme optimized for VSCode.
+
+## Commands
+
+- `Open React View` - Opens the React webview panel
+- `Hello World` - Shows a simple notification (example command)
+
+## License
+
+MIT
