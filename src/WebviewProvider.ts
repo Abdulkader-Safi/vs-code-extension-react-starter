@@ -132,12 +132,12 @@ export class ReactWebviewProvider {
 			<body>
 				<div id="root"></div>
 				<script nonce="${nonce}" type="module" src="${scriptUri}"></script>
-				<script nonce="${nonce}">
-					console.log('Webview HTML loaded');
-					console.log('Root element:', document.getElementById('root'));
-					console.log('Script URI:', '${scriptUri}');
-					console.log('Style URI:', '${styleUri}');
-				</script>
+				// <script nonce="${nonce}">
+        // console.log('Webview HTML loaded');
+        // console.log('Root element:', document.getElementById('root'));
+        // console.log('Script URI:', '${scriptUri}');
+        // console.log('Style URI:', '${styleUri}');
+				// </script>
 			</body>
 			</html>`;
   }

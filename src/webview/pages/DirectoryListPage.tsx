@@ -19,6 +19,7 @@ const DirectoryListPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    handleLoadDirectory();
     const handleMessage = (event: MessageEvent) => {
       const message = event.data;
       if (message.type === "directoryContents") {
@@ -40,27 +41,27 @@ const DirectoryListPage: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Directory Contents</h1>
+      <h1 className="mb-6 text-3xl font-bold">Directory Contents</h1>
 
-      <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
-        <button
+      <div className="p-6 bg-gray-800 rounded-lg shadow-lg">
+        {/* <button
           onClick={handleLoadDirectory}
           disabled={loading}
-          className="w-full px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+          className="w-full px-4 py-2 font-medium text-white transition-colors duration-200 bg-green-600 rounded-md hover:bg-green-700 disabled:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800"
         >
           {loading ? "Loading..." : "Load Current Directory"}
-        </button>
+        </button> */}
 
         {directoryData && (
-          <div className="mt-6">
+          <div className="">
             {directoryData.error ? (
-              <div className="p-4 bg-red-900/30 border border-red-700 rounded-md">
+              <div className="p-4 border border-red-700 rounded-md bg-red-900/30">
                 <p className="text-red-400">{directoryData.error}</p>
               </div>
             ) : (
               <>
                 {directoryData.path && (
-                  <div className="mb-4 p-3 bg-gray-700 rounded-md">
+                  <div className="p-3 mb-4 bg-gray-700 rounded-md">
                     <p className="text-sm text-gray-300">
                       <span className="font-medium">Path:</span>{" "}
                       <code className="text-blue-400">
@@ -72,14 +73,14 @@ const DirectoryListPage: React.FC = () => {
 
                 {directoryData.contents && directoryData.contents.length > 0 ? (
                   <div className="space-y-2">
-                    <h3 className="text-lg font-medium mb-3">
+                    <h3 className="mb-3 text-lg font-medium">
                       Items ({directoryData.contents.length})
                     </h3>
-                    <div className="bg-gray-700 rounded-md overflow-hidden">
+                    <div className="overflow-hidden bg-gray-700 rounded-md">
                       {directoryData.contents.map((item, index) => (
                         <div
                           key={index}
-                          className="flex items-center px-4 py-3 border-b border-gray-600 last:border-b-0 hover:bg-gray-600 transition-colors"
+                          className="flex items-center px-4 py-3 transition-colors border-b border-gray-600 last:border-b-0 hover:bg-gray-600"
                         >
                           <span className="mr-3 text-xl">
                             {item.type === "directory" ? "📁" : "📄"}
@@ -104,16 +105,16 @@ const DirectoryListPage: React.FC = () => {
           </div>
         )}
 
-        {!directoryData && !loading && (
-          <div className="mt-6 p-4 bg-gray-700 rounded-md">
-            <h3 className="text-sm font-medium mb-2">How it works:</h3>
+        {/* {!directoryData && !loading && (
+          <div className="p-4 mt-6 bg-gray-700 rounded-md">
+            <h3 className="mb-2 text-sm font-medium">How it works:</h3>
             <p className="text-sm text-gray-300">
               Click the button above to request the current workspace directory
               contents from the VSCode extension. The extension will read the
               directory and send the results back to this webview.
             </p>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

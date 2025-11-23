@@ -13,11 +13,11 @@ const NotificationPage: React.FC = () => {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Send Notification</h1>
+      <h1 className="mb-6 text-3xl font-bold">Send Notification</h1>
 
-      <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
+      <div className="p-6 bg-gray-800 rounded-lg shadow-lg">
         <div className="mb-4">
-          <label htmlFor="message" className="block text-sm font-medium mb-2">
+          <label htmlFor="message" className="block mb-2 text-sm font-medium">
             Notification Message
           </label>
           <input
@@ -32,13 +32,13 @@ const NotificationPage: React.FC = () => {
 
         <button
           onClick={handleSendNotification}
-          className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+          className="w-full px-4 py-2 font-medium text-white transition-colors duration-200 bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800"
         >
           Send Notification
         </button>
 
-        <div className="mt-6 p-4 bg-gray-700 rounded-md">
-          <h3 className="text-sm font-medium mb-2">How it works:</h3>
+        <div className="p-4 mt-6 bg-gray-700 rounded-md">
+          <h3 className="mb-2 text-sm font-medium">How it works:</h3>
           <p className="text-sm text-gray-300">
             This button sends a message to the VSCode extension, which then
             displays a notification using{" "}
