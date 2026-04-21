@@ -12,10 +12,10 @@ const NotificationPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <h1 className="mb-6 text-3xl font-bold">Send Notification</h1>
+    <div className="max-w-2xl">
+      <h1 className="mb-6 text-2xl font-semibold">Send Notification</h1>
 
-      <div className="p-6 bg-gray-800 rounded-lg shadow-lg">
+      <div className="p-6 border rounded border-vscode-panel">
         <div className="mb-4">
           <label htmlFor="message" className="block mb-2 text-sm font-medium">
             Notification Message
@@ -25,24 +25,24 @@ const NotificationPage: React.FC = () => {
             type="text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-1.5 text-sm rounded bg-vscode-input-bg text-vscode-input-fg border border-vscode-input-border placeholder:text-vscode-input-placeholder focus:outline-2 focus:outline-vscode-focus focus:outline-offset-0"
             placeholder="Enter your message..."
           />
         </div>
 
         <button
           onClick={handleSendNotification}
-          className="w-full px-4 py-2 font-medium text-white transition-colors duration-200 bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+          className="w-full px-4 py-1.5 text-sm font-medium rounded transition-colors bg-vscode-button-bg text-vscode-button-fg hover:bg-vscode-button-hover focus:outline-2 focus:outline-vscode-focus focus:outline-offset-0"
         >
           Send Notification
         </button>
 
-        <div className="p-4 mt-6 bg-gray-700 rounded-md">
+        <div className="p-3 mt-6 rounded bg-vscode-list-inactive-bg">
           <h3 className="mb-2 text-sm font-medium">How it works:</h3>
-          <p className="text-sm text-gray-300">
+          <p className="text-sm text-vscode-description">
             This button sends a message to the VSCode extension, which then
             displays a notification using{" "}
-            <code className="px-1 py-0.5 bg-gray-600 rounded text-xs">
+            <code className="px-1 py-0.5 text-xs font-mono rounded bg-vscode-code-bg">
               vscode.window.showInformationMessage()
             </code>
           </p>

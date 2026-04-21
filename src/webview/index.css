@@ -1,11 +1,54 @@
 @import "tailwindcss";
 
+@theme {
+  --color-vscode-fg: var(--vscode-foreground);
+  --color-vscode-editor-bg: var(--vscode-editor-background);
+  --color-vscode-description: var(--vscode-descriptionForeground);
+  --color-vscode-error: var(--vscode-errorForeground);
+  --color-vscode-focus: var(--vscode-focusBorder);
+  --color-vscode-panel: var(--vscode-panel-border);
+
+  --color-vscode-sidebar-bg: var(--vscode-sideBar-background);
+  --color-vscode-sidebar-fg: var(--vscode-sideBar-foreground);
+  --color-vscode-sidebar: var(--vscode-sideBar-border);
+  --color-vscode-section-bg: var(--vscode-sideBarSectionHeader-background);
+  --color-vscode-section-fg: var(--vscode-sideBarSectionHeader-foreground);
+
+  --color-vscode-button-bg: var(--vscode-button-background);
+  --color-vscode-button-fg: var(--vscode-button-foreground);
+  --color-vscode-button-hover: var(--vscode-button-hoverBackground);
+  --color-vscode-button-secondary-bg: var(--vscode-button-secondaryBackground);
+  --color-vscode-button-secondary-fg: var(--vscode-button-secondaryForeground);
+  --color-vscode-button-secondary-hover: var(--vscode-button-secondaryHoverBackground);
+
+  --color-vscode-input-bg: var(--vscode-input-background);
+  --color-vscode-input-fg: var(--vscode-input-foreground);
+  --color-vscode-input-border: var(--vscode-input-border);
+  --color-vscode-input-placeholder: var(--vscode-input-placeholderForeground);
+
+  --color-vscode-list-hover: var(--vscode-list-hoverBackground);
+  --color-vscode-list-active-bg: var(--vscode-list-activeSelectionBackground);
+  --color-vscode-list-active-fg: var(--vscode-list-activeSelectionForeground);
+  --color-vscode-list-inactive-bg: var(--vscode-list-inactiveSelectionBackground);
+
+  --color-vscode-code-bg: var(--vscode-textCodeBlock-background);
+  --color-vscode-badge-bg: var(--vscode-badge-background);
+  --color-vscode-badge-fg: var(--vscode-badge-foreground);
+  --color-vscode-link: var(--vscode-textLink-foreground);
+  --color-vscode-link-active: var(--vscode-textLink-activeForeground);
+
+  --font-sans: var(--vscode-font-family);
+  --font-mono: var(--vscode-editor-font-family);
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: var(--vscode-font-family);
+  font-size: var(--vscode-font-size);
+  font-weight: var(--vscode-font-weight);
+  color: var(--vscode-foreground);
+  background-color: var(--vscode-editor-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
